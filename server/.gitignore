@@ -1,0 +1,53 @@
+# Node modules
+/node_modules/
+
+# Logs
+*.log
+logs/
+*.log.*
+
+# Environment files
+.env
+.env.*
+
+# Build output
+dist/
+build/
+
+# Dependencies
+package-lock.json
+yarn.lock
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# IDE/editor directories
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+
+# NPM package-lock
+package-lock.json
+
+# Optional: Coverage directory
+coverage/
+
+# Optional: Debugger folders
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Optional: Sentry files
+.sentry/
+
+# Optional: Prisma files
+.prisma/
+
+# Optional: Miscellaneous
+*.tgz
+*.swp
+*.swo
