@@ -4,9 +4,9 @@ import { useState } from 'react';
 import axios from 'axios';
 
 const AadhaarValidation = () => {
+
   const [aadhaar, setAadhaar] = useState('');
   const [message, setMessage] = useState('');
-
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setAadhaar(e.target.value);
   };

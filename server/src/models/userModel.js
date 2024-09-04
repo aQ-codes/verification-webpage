@@ -1,5 +1,6 @@
-// backend/models/user.js
+
 import mongoose from "mongoose";
+
 
 const userSchema = new mongoose.Schema({
     name: {
@@ -9,7 +10,7 @@ const userSchema = new mongoose.Schema({
     },
     email: {
         type: String,
-        required: [true, "Please provide a email"],
+        required: [true, "Please provide an email"],
         unique: true,
     },
     phoneNumber: {
@@ -19,19 +20,30 @@ const userSchema = new mongoose.Schema({
     },
     aadharNumber: {
         type: String,
-        required: [true, "Please provide your aadhar number"],
         unique: true,
     },
     dateOfBirth: {
         type: Date,
         required: [true, "Please provide your date of birth"]
     },
-    isVerfied: {
-        type: Boolean,
-        default: false,
+    panNumber: {
+        type: String,
+        unique: true,
     },
-    verifyToken: String,
-    verifyTokenExpiry: Date,
+    gstin: {
+        type: String,
+        unique: true,
+    },
+    bankAccountNumber: {
+        type: String,
+        unique: true,
+    },
+    verifyAadhaar: {
+        type: Boolean,
+        default: false, 
+    }
+    // verifyToken: String,
+    // verifyTokenExpiry: Date,
 });
 
 const User = mongoose.models.users || mongoose.model("users", userSchema);

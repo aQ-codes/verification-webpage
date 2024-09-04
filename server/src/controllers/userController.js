@@ -1,12 +1,10 @@
-// src/controllers/userController.js
 import User from "../models/userModel.js";
 
 export const createUser = async (req, res) => {
     try {
-        console.log("entered controller")
-        console.log(req.body)
+        console.log("entered controller");
+        console.log(req.body);
         const { name, email, phoneNumber, aadharNumber, dateOfBirth } = req.body;
-
 
         // Check if user already exists
         const existingUser = await User.findOne({ email });
@@ -31,6 +29,7 @@ export const createUser = async (req, res) => {
         });
 
     } catch (error) {
+        console.log(error);
         res.status(500).json({ error: error.message });
     }
 };

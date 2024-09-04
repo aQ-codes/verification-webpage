@@ -17,10 +17,15 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { useRouter } from "next/navigation";
 
-function OtpLogin() {
-  const router = useRouter();
+type PhoneNumberProps = {
+  defaultPhoneNumber ?: string | undefined;
+  setPhoneNumberfromChild ?: (data: string) => void;
+  setSuccessfromChild ?: (data: boolean) => void;
+};
 
-  const [phoneNumber, setPhoneNumber] = useState("");
+function OtpLogin({ defaultPhoneNumber, setPhoneNumberfromChild,     setSuccessfromChild }: PhoneNumberProps) {
+  const router = useRouter();
+  const [phoneNumber, setPhoneNumber] =  useState(defaultPhoneNumber || "");
   const [otp, setOtp] = useState("");
   const [error, setError] = useState<string | null>(null);
   const [success, setSuccess] = useState("");
@@ -33,6 +38,12 @@ function OtpLogin() {
     useState<ConfirmationResult | null>(null);
 
   const [isPending, startTransition] = useTransition();
+
+
+  // useEffect (() => {
+  // console.log(phoneNumber)
+  // }, [])
+
 
   useEffect(() => {
     let timer: NodeJS.Timeout;
@@ -76,7 +87,13 @@ function OtpLogin() {
 
       try {
         await confirmationResult.confirm(otp);
-        router.replace("/");
+        if (setPhoneNumberfromChild) {
+          setPhoneNumberfromChild(phoneNumber);
+        }
+        if (setSuccessfromChild) {
+          setSuccessfromChild(true);
+        }
+        // router.replace("/");
       } catch (error: any) {
         console.log("OTP verification error:", error);
 
@@ -206,7 +223,6 @@ function OtpLogin() {
           </InputOTPGroup>
         </InputOTP>
       )}
-
       <Button
         disabled={!phoneNumber || isPending || resendCountdown > 0}
         onClick={() => requestOtp()}

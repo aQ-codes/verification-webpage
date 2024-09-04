@@ -1,12 +1,12 @@
 import '@/app/globals.css'
 import Navbar from '@/components/Navbar';
-
 import { ReactNode } from 'react';
 
 
+
 export const metadata = {
-    title: "Car Rental Webpage",
-    description: 'Rent a car anywhere  in Saudi'
+    title: "VerifyME",
+    description: 'Verify your identification documents'
 }
 
 interface RootLayoutProps {
@@ -23,7 +23,9 @@ const RootLayout = ({ children }: RootLayoutProps) => {
             <Navbar/>
           </header>
           <main>
+            {/* <Provider store={store}> */}
             {children}
+          {/* </Provider> */}
           </main>
           <footer>
             <div className="container">
